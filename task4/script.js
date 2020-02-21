@@ -1,8 +1,8 @@
 function checkPalindrome(number) {
-  let strNumber = number.toString();
-  const partOfPalindrome = checker(strNumber);
+  console.log(number)
+  // let strNumber = number.toString();
+  const partOfPalindrome = checker(number);
   const palindrome = partOfPalindrome.split('').reverse().join('') + partOfPalindrome;
-  console.log(strNumber)
   console.log(palindrome)
 }
 
@@ -18,5 +18,6 @@ function checker(str) {
   return firstPalindrome;
 }
 
-checkPalindrome(1235775234)
+// checkPalindrome('1235775234')
+checkPalindrome('17255213489980')
 
