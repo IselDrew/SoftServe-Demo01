@@ -1,19 +1,21 @@
-function myFunc(length, maxPow) {
+function myFunc(length, minPow) {
   const arr = [];
-  const square = 2;
 
-  for (let i = 0; i < length; i++) {
-    if (Math.pow(i, square) > maxPow) {
-      break;
-    } else {
-      arr.push(i);
-    }
+  const minValue = Math.sqrt(minPow);
+  const intMinValue = Math.ceil(minValue);
+
+  const pushLength = intMinValue + length;
+
+  // console.log(`Start from ${intMinValue} to ${pushLength}`);
+
+  for (let i = intMinValue; i < pushLength; i++) {
+    arr.push(i);
   }
 
-  const result = arr.join()
+  const result = arr.join();
 
   return result;
 }
 
-console.log(myFunc(100, 100))
+console.log(myFunc(10, 45))
 
