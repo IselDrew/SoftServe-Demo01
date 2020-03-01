@@ -1,7 +1,16 @@
 function checkNesting(env1, env2) {
-  if ((env2.p <= env1.a && env2.q <= env1.b)
-    || (env2.p > env1.a && b >= ))
-}
+  const a = env1.a;
+  const b = env1.b;
+  const p = env2.p;
+  const q = env2.q;
+
+  const epicFormula = ((2*p*q*a + (Math.pow(p, 2) - Math.pow(q, 2))*Math.sqrt(Math.pow(p, 2) + Math.pow(q, 2) - Math.pow(a, 2)))/(Math.pow(p, 2) + Math.pow(q, 2)))
+  if ((env2.p <= env1.a && env2.q <= env1.b) || (env2.p > env1.a && b >= epicFormula)) {
+    console.log('1')
+  } else {
+    console.log('0')
+  }
+} 
 
 const envelop1 = {
   a: 10,
@@ -9,8 +18,9 @@ const envelop1 = {
 };
 
 const envelop2 = {
-  p: 9,
+  p: 11,
   q: 9,
 };
 
 checkNesting(envelop1, envelop2);
+
