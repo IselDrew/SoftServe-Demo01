@@ -28,23 +28,23 @@ document.querySelector("#f0 button").addEventListener("click", e => {
 
 //2 task
 document.querySelector("#f1 button").addEventListener("click", e => {
-  e.preventDefault()
-  let data = {}
+  e.preventDefault();
+  let data = {};
   document.querySelectorAll("#f1 input").forEach(item => {
-    data[item.name] = Number(item.value)
-  })
-  let result = rectangleInRectangle(
+    data[item.name] = item.value
+  });
+  let result = checkNesting(
     { w: data.wOne, h: data.hOne },
     { w: data.wTwo, h: data.hTwo }
-  )
+  );
   if (result.reason) {
     document.getElementById(
       "1"
-    ).innerHTML = `status: ${result.status} \nreason:${result.reason}`
+    ).innerHTML = `status: ${result.status} \nreason: ${result.reason}`;
   } else {
     document.getElementById(
       "1"
-    ).innerHTML = `Вложение возможно в конверт под номером: ${result}\n*Если номер конверта равен 0, вложение не возможно!`
+    ).innerHTML = `Вложение возможно в конверт под номером: ${result}\n*Если номер конверта равен 0, вложение не возможно!`;
   }
 })
 
