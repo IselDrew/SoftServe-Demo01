@@ -49,36 +49,36 @@ document.querySelector("#f1 button").addEventListener("click", e => {
 })
 
 //3 task
-let dataTask3 = []
+const dataTask3 = [];
 document.querySelector("#f2 button").addEventListener("click", e => {
-  e.preventDefault()
-  let obj = {}
-  obj["vertices"] = document.querySelector('#f2 input[name="vertices"]').value
-  obj[`${obj.vertices[0]}`] = Number(
+  e.preventDefault();
+  const obj = {};
+  obj["verticles"] = document.querySelector('#f2 input[name="verticles"]').value.toUpperCase();
+  obj[`${obj.verticles[0].toLowerCase()}`] = Math.abs(Number(
     document.querySelector('#f2 input[name="tF"]').value
-  )
-  obj[`${obj.vertices[1]}`] = Number(
+  ));
+  obj[`${obj.verticles[1].toLowerCase()}`] = Math.abs(Number(
     document.querySelector('#f2 input[name="tS"]').value
-  )
-  obj[`${obj.vertices[2]}`] = Number(
+  ));
+  obj[`${obj.verticles[2].toLowerCase()}`] = Math.abs(Number(
     document.querySelector('#f2 input[name="tT"]').value
-  )
-  dataTask3.push(obj)
-  document.getElementById("t-list").innerHTML += obj.vertices + " "
+  ));
+  dataTask3.push(obj);
+  document.getElementById("t-list").innerHTML += obj.verticles + " ";
 })
 document.querySelector("#f2 a").addEventListener("click", e => {
-  e.preventDefault()
-  let result = sortTriangle(dataTask3)
+  e.preventDefault();
+  const result = sortTriangles(dataTask3);
   if (result.reason) {
     document.getElementById(
       "2"
-    ).innerHTML = `status: ${result.status} \nreason:${result.reason}`
+    ).innerHTML = `status: ${result.status} \nreason: ${result.reason}`;
   } else {
     document.getElementById("2").innerHTML = `Отсортированые треугольники:\n[ `
     result.forEach(item => {
       document.getElementById("2").innerHTML += `${item} `
     })
-    document.getElementById("2").innerHTML += `]`
+    document.getElementById("2").innerHTML += `]`;
   }
 })
 
