@@ -1,9 +1,17 @@
-function createCheeseBoard(defHeight, defWidth, str) {
-  const height = Math.abs(defHeight);
-  const width = Math.abs(defWidth);
+function calcChessBoard(defHeight, defWidth, str) {
+  if (arguments.length !== 3) {
+    return { status: 'failed', reason: 'Wrong amount of arguments' };
+  }
+  const heightNum = Number(defHeight);
+  const widthNum = Number(defWidth);
 
-  if (!validateData(height, width, str)) {
-    return;
+  const height = Math.abs(heightNum);
+  const width = Math.abs(widthNum);
+
+  const isNotValid = validateData(height, width, str);
+
+  if (isNotValid) {
+    return isNotValid;
   }
 
   const symbol = str[0];
@@ -18,31 +26,30 @@ function createCheeseBoard(defHeight, defWidth, str) {
       line += '\n';
     }
   }
-  // drawChessBoard(line)
   return line;
 }
 
 function validateData(height, width, str) {
   const err = { status: 'failed', reason: '' };
+  const maxValue = 50;
+  const minValue = 1;
 
-  if (!Number.isInteger(height) || height === 0 || height >= 50) {
-    err.reason = 'Expecting an integer in range from 1 to 50 as height';
-    console.log(err);
-    return false;
+  if (!Number.isInteger(height) || height === 0 || height >= maxValue) {
+    err.reason = `Expecting an integer in range from ${minValue} to ${maxValue} as height`;
+    console.error(err);
+    return err;
   }
 
-  if (!Number.isInteger(width) || width === 0 || width >= 50) {
-    err.reason = 'Expecting an integer in range from 1 to 50 as width';
-    console.log(err);
-    return false;
+  if (!Number.isInteger(width) || width === 0 || width >= maxValue) {
+    err.reason = `Expecting an integer in range from ${minValue} to ${maxValue} as width`;
+    console.error(err);
+    return err;
   }
 
   if(!str || typeof(str) !== 'string') {
     err.reason = 'Expecting not empty string as symbol to display';
-    console.log(err);
-    return false;
+    console.error(err);
+    return err;
   }
-
-  return true;
 }
 
