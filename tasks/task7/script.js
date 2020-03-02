@@ -18,5 +18,5 @@ function getRange(min, max) {
   console.log(arr)
 }
 
-getRange(0, 10)
+getRange(30, 1000)
 
