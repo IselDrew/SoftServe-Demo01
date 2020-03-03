@@ -29,19 +29,19 @@ function validateData(height, width, str) {
   const minValue = 1;
 
   if (!Number.isInteger(height) || height === 0 || height >= maxValue) {
-    err.reason = `Expecting an integer in range from ${minValue} to ${maxValue} as height`;
+    err.reason = `Expecting an integer in range [${minValue}, ${maxValue}) as height`;
     console.error(err);
     return err;
   }
 
   if (!Number.isInteger(width) || width === 0 || width >= maxValue) {
-    err.reason = `Expecting an integer in range from ${minValue} to ${maxValue} as width`;
+    err.reason = `Expecting an integer in range [${minValue}, ${maxValue}) as width`;
     console.error(err);
     return err;
   }
 
   if(!str || typeof(str) !== 'string') {
-    err.reason = 'Expecting not empty string as symbol to display';
+    err.reason = 'Expecting non-empty string as symbol to display';
     console.error(err);
     return err;
   }

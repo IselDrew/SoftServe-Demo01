@@ -128,7 +128,7 @@ document.querySelector("#f5 button").addEventListener("click", e => {
   e.preventDefault()
   const data = {}
   document.querySelectorAll("#f5 input").forEach(item => {
-    data[item.name] = Number(item.value)
+    data[item.name] = item.value
   })
   const result = getNumbersRow(data.length, data.minPow)
   if (result.reason) {

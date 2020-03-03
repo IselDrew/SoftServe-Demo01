@@ -61,7 +61,11 @@ function checkNumberByEasy(number) {
 }
 
 function checkNumberByDifficult(number) {
-  const digits = number.toString().split('');
+  const strDigits = number.toString().split('');
+
+  const digits = strDigits.map(digit => {
+    return parseInt(digit)
+  })
 
   const even = [];
   const odd = [];
