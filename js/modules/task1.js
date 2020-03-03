@@ -1,7 +1,10 @@
-export function calcChessBoard(height, width, str) {
+export function calcChessBoard(strHeight, strWidth, str) {
   if (arguments.length !== 3) {
-    return { status: 'failed', reason: 'Wrong amount of arguments' };
+    return { status: "failed", reason: "Wrong amount of arguments" };
   }
+
+  const height = Math.abs(Number(strHeight));
+  const width = Math.abs(Number(strWidth));
 
   const isNotValid = validateData(height, width, str);
   if (isNotValid) {
@@ -9,22 +12,22 @@ export function calcChessBoard(height, width, str) {
   }
 
   const symbol = str[0];
-  let line = '';
+  let line = "";
 
   for (let i = 0; i < height; i++) {
-    line += (i % 2) ? ' ' : '';
+    line += i % 2 ? " " : "";
     for (let j = 0; j < width; j++) {
-      line += (j % 2) ? ' ' : symbol;
+      line += j % 2 ? " " : symbol;
     }
     if (i !== height - 1) {
-      line += '\n';
+      line += "\n";
     }
   }
   return line;
 }
 
 function validateData(height, width, str) {
-  const err = { status: 'failed', reason: '' };
+  const err = { status: "failed", reason: "" };
   const maxValue = 50;
   const minValue = 1;
 
@@ -40,10 +43,9 @@ function validateData(height, width, str) {
     return err;
   }
 
-  if(!str || typeof(str) !== 'string') {
-    err.reason = 'Expecting non-empty string as symbol to display';
+  if (!str || typeof str !== "string") {
+    err.reason = "Expecting non-empty string as symbol to display";
     console.error(err);
     return err;
   }
 }
-

@@ -1,6 +1,6 @@
 export function checkLuckyTicket(range) {
   if (arguments.length !== 1) {
-    return { status: 'failed', reason: 'Wrong amount of arguments' };
+    return { status: "failed", reason: "Wrong amount of arguments" };
   }
 
   const min = Math.abs(Number(range.min));
@@ -14,11 +14,11 @@ export function checkLuckyTicket(range) {
   const result = calcAmount(min, max);
 
   if (result.counterEasy > result.counterDifficult) {
-    result.winner = 'Easy';
-  } else if (result.counterEasy === result.counterDifficult){
-    result.winner = 'No winner';
+    result.winner = "Easy";
+  } else if (result.counterEasy === result.counterDifficult) {
+    result.winner = "No winner";
   } else {
-    result.winner = 'Difficult';
+    result.winner = "Difficult";
   }
 
   return result;
@@ -39,16 +39,15 @@ function calcAmount(min, max) {
 
   return {
     counterEasy,
-    counterDifficult
+    counterDifficult,
   };
 }
 
-
 function checkNumberByEasy(number) {
-  const strNumber = number.toString().padStart(6, '0');
+  const strNumber = number.toString().padStart(6, "0");
 
-  const arrLeftSide = strNumber.substring(0, 3).split('');
-  const arrRightSide = strNumber.substring(3).split('');
+  const arrLeftSide = strNumber.substring(0, 3).split("");
+  const arrRightSide = strNumber.substring(3).split("");
 
   const leftSide = getSumOfArr(arrLeftSide);
   const rightSide = getSumOfArr(arrRightSide);
@@ -61,11 +60,11 @@ function checkNumberByEasy(number) {
 }
 
 function checkNumberByDifficult(number) {
-  const strDigits = number.toString().split('');
+  const strDigits = number.toString().split("");
 
   const digits = strDigits.map(digit => {
-    return parseInt(digit)
-  })
+    return parseInt(digit);
+  });
 
   const even = [];
   const odd = [];
@@ -76,9 +75,9 @@ function checkNumberByDifficult(number) {
     } else {
       odd.push(item);
     }
-  })
+  });
 
-  if(!even.length || !odd.length) {
+  if (!even.length || !odd.length) {
     return;
   }
 
@@ -93,21 +92,19 @@ function checkNumberByDifficult(number) {
 }
 
 function getSumOfArr(arr) {
-  return arr.reduce((acc, item) => 
-    parseInt(acc) + parseInt(item)
-  );
+  return arr.reduce((acc, item) => parseInt(acc) + parseInt(item));
 }
 
 function validateData(minStr, maxStr) {
-  const err = { status: 'failed', reason: '' };
+  const err = { status: "failed", reason: "" };
 
   const minNumber = Math.abs(Number(minStr));
   const maxNumber = Math.abs(Number(maxStr));
 
   const maxAllowedValue = 1e6;
 
-  if(minNumber === maxNumber || minNumber > maxNumber) {
-    err.reason = 'Invalid range';
+  if (minNumber === maxNumber || minNumber > maxNumber) {
+    err.reason = "Invalid range";
     console.error(err);
     return err;
   }
@@ -124,3 +121,4 @@ function validateData(minStr, maxStr) {
     return err;
   }
 }
+

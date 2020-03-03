@@ -12,17 +12,17 @@ export function sortTriangles(triangles) {
     const currentTriangle = getTriangle(triangle);
 
     triangleNotValid = validateData(currentTriangle);
-    if(triangleNotValid) {
+    if (triangleNotValid) {
       isValid = false;
       return;
     }
 
     const [name, a, b, c] = currentTriangle;
-    const area = calcArea(a, b, c); 
-    areas.push({area, name});
-  })
+    const area = calcArea(a, b, c);
+    areas.push({ area, name });
+  });
 
-  if(!isValid) {
+  if (!isValid) {
     return triangleNotValid;
   }
 
@@ -30,10 +30,10 @@ export function sortTriangles(triangles) {
 
   const sortedTriangles = sortedAreas.map(triangle => {
     return triangle.name;
-  })
+  });
 
   triangleNotValid = checkNamesUniqueness(sortedTriangles);
-  if(triangleNotValid) {
+  if (triangleNotValid) {
     return triangleNotValid;
   }
 
@@ -55,44 +55,43 @@ function getTriangle(triangle) {
   for (let key in triangle) {
     triangleData.push(triangle[key]);
   }
-  console.log(triangleData)
+  console.log(triangleData);
   return triangleData;
 }
 
 function calcArea(a, b, c) {
   const p = (a + b + c) / 2;
 
-  return Math.sqrt(p*(p-a)*(p-b)*(p-c));
+  return Math.sqrt(p * (p - a) * (p - b) * (p - c));
 }
 
 function checkNamesUniqueness(arr) {
   const set = new Set(arr);
-  console.log(arr, set)
-  if(arr.length !== set.size){
-    return { status: "failed", reason: "Repeating triangles" }
+  console.log(arr, set);
+  if (arr.length !== set.size) {
+    return { status: "failed", reason: "Repeating triangles" };
   }
 }
-
 
 function validateData(triangle) {
   const err = { status: "failed", reason: "" };
   const [name, a, b, c] = triangle;
 
-  if (name.length !== 3 || typeof(name) !== 'string') {
-    err.reason = `Invalid name of triangle ${name}`
+  if (name.length !== 3 || typeof name !== "string") {
+    err.reason = `Invalid name of triangle ${name}`;
     console.error(err);
     return err;
   }
 
   if (!checkVerticlesUniqueness(name)) {
-    err.reason = `Repeating verticles in ${name}`
+    err.reason = `Repeating verticles in ${name}`;
     console.error(err);
     return err;
   }
 
   for (let i = 1; i < triangle.length; i++) {
     if (isNaN(triangle[i])) {
-      err.reason = 'Side of triangle should be non-zero number'
+      err.reason = "Side of triangle should be non-zero number";
       console.error(err);
       return err;
     }
@@ -101,16 +100,16 @@ function validateData(triangle) {
   const isValidTriangle = a + b <= c || a + c <= b || b + c <= a;
 
   if (isValidTriangle) {
-    err.reason = `${name} is not a triangle`
+    err.reason = `${name} is not a triangle`;
     console.error(err);
     return err;
   }
 }
 
 function checkVerticlesUniqueness(name) {
-  const verticles = name.split('');
+  const verticles = name.split("");
   const set = new Set(verticles);
-  console.log(verticles, set)
+  console.log(verticles, set);
   return verticles.length === set.size;
 }
 

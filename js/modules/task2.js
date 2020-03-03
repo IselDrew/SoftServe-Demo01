@@ -4,8 +4,8 @@ export function checkNesting(env1, env2) {
   }
 
   const envelope1 = {
-    width: Math.abs(env1.w),
-    height: Math.abs(env1.h),
+    width: Math.abs(Number(env1.w)),
+    height: Math.abs(Number(env1.h)),
     number: 1,
   };
 
@@ -16,7 +16,7 @@ export function checkNesting(env1, env2) {
   };
 
   const isNotValid = validateData(envelope1, envelope2);
-  if(isNotValid) {
+  if (isNotValid) {
     return isNotValid;
   }
 
@@ -62,22 +62,22 @@ function validateData(env1, env2) {
   const err = { status: "failed", reason: "" };
 
   if (isNaN(env1.width) || env1.width === 0) {
-    err.reason = 'Width of first envelope should be non-zero number';
+    err.reason = "Width of first envelope should be non-zero number";
     console.error(err);
     return err;
   }
   if (isNaN(env1.height) || env1.height === 0) {
-    err.reason = 'Height of first envelope should be non-zero number';
+    err.reason = "Height of first envelope should be non-zero number";
     console.error(err);
     return err;
   }
   if (isNaN(env2.width) || env2.width === 0) {
-    err.reason = 'Width of second envelope should be non-zero number';
+    err.reason = "Width of second envelope should be non-zero number";
     console.error(err);
     return err;
   }
   if (isNaN(env2.height) || env2.height === 0) {
-    err.reason = 'Height of second envelope should be non-zero number';
+    err.reason = "Height of second envelope should be non-zero number";
     console.error(err);
     return err;
   }

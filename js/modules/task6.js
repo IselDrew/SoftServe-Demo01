@@ -1,6 +1,6 @@
 export function getNumbersRow(unformLength, unformMinPow) {
   if (arguments.length !== 2) {
-    return { status: 'failed', reason: 'Wrong amount of arguments' };
+    return { status: "failed", reason: "Wrong amount of arguments" };
   }
 
   const length = Math.abs(Number(unformLength));
@@ -22,23 +22,24 @@ export function getNumbersRow(unformLength, unformMinPow) {
     arr.push(i);
   }
 
-  const result = arr.join(', ');
+  const result = arr.join(", ");
 
   return result;
 }
 
 function validateData(length, minPowStr) {
-  const err = { status: 'failed', reason: '' };
+  const err = { status: "failed", reason: "" };
   const minPowNumber = Number(minPowStr);
 
-  if(!Number.isInteger(length) || !length) {
-    err.reason = 'Length should be a non-zero integer';
+  if (!Number.isInteger(length) || !length) {
+    err.reason = "Length should be a non-zero integer";
     console.error(err);
     return err;
   }
   if (!Number.isInteger(minPowNumber) || minPowStr.length === 0) {
-    err.reason = 'Minimal pow should an integer';
+    err.reason = "Minimal pow should an integer";
     console.error(err);
     return err;
   }
 }
+

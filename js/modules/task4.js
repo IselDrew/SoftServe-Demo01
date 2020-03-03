@@ -1,6 +1,6 @@
 export function checkPalindrome(number) {
   if (arguments.length !== 1) {
-    return { status: 'failed', reason: 'Wrong amount of arguments' };
+    return { status: "failed", reason: "Wrong amount of arguments" };
   }
 
   const isNotValid = validateData(number);
@@ -19,11 +19,15 @@ export function checkPalindrome(number) {
   for (let i = 0; i < str.length - 1; i++) {
     if (str[i] === str[i + 1]) {
       hasPalindrome = true;
-      leftSide = str.slice(0, i + 1).split('').reverse().join('');
+      leftSide = str
+        .slice(0, i + 1)
+        .split("")
+        .reverse()
+        .join("");
       rightSide = str.slice(i + 1);
       let palindrome = getPalindrome(leftSide, rightSide);
       arr.push(palindrome);
-    } 
+    }
   }
 
   if (!hasPalindrome) {
@@ -31,8 +35,8 @@ export function checkPalindrome(number) {
   }
 
   const longestPalindrom = arr.reduce((acc, item) => {
-    return acc.length > item.length ? acc : item 
-  })
+    return acc.length > item.length ? acc : item;
+  });
 
   return longestPalindrom;
 }
@@ -43,18 +47,18 @@ function getPalindrome(str1, str2) {
 
   for (let i = 0; i < longestStr.length; i++) {
     if (str1[i] === str2[i]) {
-      arr.push(str1[i])
+      arr.push(str1[i]);
     }
   }
-  const rightSide = arr.join('');
-  const leftSide = arr.reverse().join('');
+  const rightSide = arr.join("");
+  const leftSide = arr.reverse().join("");
 
   const palindrome = leftSide + rightSide;
   return palindrome;
 }
 
 function validateData(number) {
-  const err = { status: 'failed', reason: '' };
+  const err = { status: "failed", reason: "" };
   const minValue = 10;
   const maxValue = 1e16;
 
