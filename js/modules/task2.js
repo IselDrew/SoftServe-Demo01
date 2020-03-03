@@ -4,18 +4,18 @@ function checkNesting(env1, env2) {
   }
 
   const envelope1 = {
-    width: Math.abs(Number(env1.w)),
-    height: Math.abs(Number(env1.h)),
+    width: Math.abs(env1.w),
+    height: Math.abs(env1.h),
     number: 1,
   };
 
   const envelope2 = {
-    width: Math.abs(Number(env2.w)),
-    height: Math.abs(Number(env2.h)),
+    width: Math.abs(env2.w),
+    height: Math.abs(env2.h),
     number: 2,
   };
 
-  const isNotValid = validateData(envelope1, envelope2);
+  const isNotValid = validateEnvelope(envelope1, envelope2);
   if(isNotValid) {
     return isNotValid;
   }
@@ -58,7 +58,7 @@ function checkNesting(env1, env2) {
   }
 }
 
-function validateData(env1, env2) {
+function validateEnvelope(env1, env2) {
   const err = { status: "failed", reason: "" };
 
   if (isNaN(env1.width) || env1.width === 0) {

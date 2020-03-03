@@ -1,14 +1,9 @@
-function calcChessBoard(defHeight, defWidth, str) {
+function calcChessBoard(height, width, str) {
   if (arguments.length !== 3) {
     return { status: 'failed', reason: 'Wrong amount of arguments' };
   }
-  const heightNum = Number(defHeight);
-  const widthNum = Number(defWidth);
 
-  const height = Math.abs(heightNum);
-  const width = Math.abs(widthNum);
-
-  const isNotValid = validateData(height, width, str);
+  const isNotValid = validateChessBoard(height, width, str);
 
   if (isNotValid) {
     return isNotValid;
@@ -29,7 +24,7 @@ function calcChessBoard(defHeight, defWidth, str) {
   return line;
 }
 
-function validateData(height, width, str) {
+function validateChessBoard(height, width, str) {
   const err = { status: 'failed', reason: '' };
   const maxValue = 50;
   const minValue = 1;

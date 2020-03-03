@@ -15,8 +15,8 @@ document.querySelector("#f0 button").addEventListener("click", e => {
     data[item.name] = item.value
   });
   let result = calcChessBoard(
-    data.height,
-    data.width,
+    Math.abs(Number(data.height)),
+    Math.abs(Number(data.width)),
     data.char
   );
   if (result.reason) {
@@ -34,8 +34,8 @@ document.querySelector("#f1 button").addEventListener("click", e => {
     data[item.name] = item.value
   });
   let result = checkNesting(
-    { w: data.wOne, h: data.hOne },
-    { w: data.wTwo, h: data.hTwo }
+    { w: Number(data.wOne), h: Number(data.hOne) },
+    { w: Number(data.wTwo), h: Number(data.hTwo) }
   );
   if (result.reason) {
     document.getElementById(

@@ -11,7 +11,7 @@ function sortTriangles(triangles) {
   triangles.forEach(triangle => {
     const currentTriangle = getTriangle(triangle);
 
-    triangleNotValid = validateData(currentTriangle);
+    triangleNotValid = validateTriangle(currentTriangle);
     if(triangleNotValid) {
       isValid = false;
       return;
@@ -80,7 +80,7 @@ function checkVerticlesUniqueness(name) {
   return verticles.length === set.size;
 }
 
-function validateData(triangle) {
+function validateTriangle(triangle) {
   const err = { status: "failed", reason: "" };
   const [name, a, b, c] = triangle;
 
