@@ -1,4 +1,4 @@
-function checkNesting(env1, env2) {
+export function checkNesting(env1, env2) {
   if (arguments.length !== 2) {
     return { status: "failed", reason: "Wrong amount of arguments" };
   }
@@ -15,7 +15,7 @@ function checkNesting(env1, env2) {
     number: 2,
   };
 
-  const isNotValid = validateEnvelope(envelope1, envelope2);
+  const isNotValid = validateData(envelope1, envelope2);
   if(isNotValid) {
     return isNotValid;
   }
@@ -58,7 +58,7 @@ function checkNesting(env1, env2) {
   }
 }
 
-function validateEnvelope(env1, env2) {
+function validateData(env1, env2) {
   const err = { status: "failed", reason: "" };
 
   if (isNaN(env1.width) || env1.width === 0) {

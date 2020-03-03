@@ -1,4 +1,4 @@
-function sortTriangles(triangles) {
+export function sortTriangles(triangles) {
   if (arguments.length === 0) {
     return { status: "failed", reason: "Wrong amount of arguments" };
   }
@@ -11,7 +11,7 @@ function sortTriangles(triangles) {
   triangles.forEach(triangle => {
     const currentTriangle = getTriangle(triangle);
 
-    triangleNotValid = validateTriangle(currentTriangle);
+    triangleNotValid = validateData(currentTriangle);
     if(triangleNotValid) {
       isValid = false;
       return;
@@ -73,14 +73,8 @@ function checkNamesUniqueness(arr) {
   }
 }
 
-function checkVerticlesUniqueness(name) {
-  const verticles = name.split('');
-  const set = new Set(verticles);
-  console.log(verticles, set)
-  return verticles.length === set.size;
-}
 
-function validateTriangle(triangle) {
+function validateData(triangle) {
   const err = { status: "failed", reason: "" };
   const [name, a, b, c] = triangle;
 
@@ -112,3 +106,11 @@ function validateTriangle(triangle) {
     return err;
   }
 }
+
+function checkVerticlesUniqueness(name) {
+  const verticles = name.split('');
+  const set = new Set(verticles);
+  console.log(verticles, set)
+  return verticles.length === set.size;
+}
+
