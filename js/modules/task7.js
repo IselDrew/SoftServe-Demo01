@@ -2,9 +2,6 @@ export function getRange(context) {
   if (arguments.length !== 1) {
     return { status: "failed", reason: "Wrong amount of arguments" };
   }
-  if (typeof context !== "object" || Array.isArray(context)) {
-    return { status: "failed", reason: "Expecting object as argument" };
-  }
 
   let range;
 
@@ -17,24 +14,23 @@ export function getRange(context) {
       return isNotValid;
     }
 
-    range = fibRange(min, max);
-  }
-
-  if (context.length) {
+    range = getRangeByRange(min, max);
+  } else if (context.length) {
     const length = Math.abs(Number(context.length));
-    console.log(typeof length, length);
 
     const isNotValid = validateLength(length);
     if (isNotValid) {
       return isNotValid;
     }
 
-    range = fibLength(length);
+    range = getRangeByLength(length);
+  } else {
+    return { status: "failed", reason: "No input" };
   }
   return range;
 }
 
-function fibLength(length) {
+function getRangeByLength(length) {
   let next = 1;
   let prev = 0;
 
@@ -52,14 +48,13 @@ function fibLength(length) {
   return arr;
 }
 
-function fibRange(min, max) {
+function getRangeByRange(min, max) {
   let next = 1;
   let prev = 0;
 
   const arr = [];
 
   while (next <= max) {
-    console.log(next)
     next += prev;
     prev = next - prev;
     if (next >= min && next <= max) {
@@ -73,7 +68,6 @@ function fibRange(min, max) {
 function validateRange(min, max) {
   const err = { status: "failed", reason: "" };
 
-
   if (max <= min) {
     err.reason = `Max shouldn't be more or equal min`;
     console.error(err);
@@ -81,13 +75,13 @@ function validateRange(min, max) {
   }
 
   if (!Number.isInteger(min)) {
-    err.reason = `Expecting an integer`;
+    err.reason = `Expecting an integer as min`;
     console.error(err);
     return err;
   }
 
   if (!Number.isInteger(max)) {
-    err.reason = `Expecting an integer`;
+    err.reason = `Expecting an integer as max`;
     console.error(err);
     return err;
   }

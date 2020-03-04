@@ -63,7 +63,7 @@ function validateData(number) {
   const maxValue = 1e16;
 
   if (!Number.isInteger(number) || number < minValue || number > maxValue) {
-    err.reason = `Number (Число) should be integer value in range [${minValue}, ${maxValue})`;
+    err.reason = `Number should be an integer value in range [${minValue}, ${maxValue})`;
     console.error(err);
     return err;
   }

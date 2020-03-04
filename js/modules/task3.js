@@ -37,6 +37,7 @@ export function sortTriangles(triangles) {
     return triangleNotValid;
   }
 
+  console.log(sortedTriangles)
   return sortedTriangles;
 }
 

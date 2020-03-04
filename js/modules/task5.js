@@ -21,6 +21,7 @@ export function checkLuckyTicket(range) {
     result.winner = "Difficult";
   }
 
+  console.log(result)
   return result;
 }
 
