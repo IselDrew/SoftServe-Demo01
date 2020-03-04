@@ -36,7 +36,7 @@ function validateData(length, minPowStr) {
     console.error(err);
     return err;
   }
-  if (!Number.isInteger(minPowNumber) || minPowStr.length === 0) {
+  if (typeof minPowNumber !== 'number' || isNaN(minPowNumber) || minPowStr.length === 0) {
     err.reason = "Minimal pow should an integer";
     console.error(err);
     return err;

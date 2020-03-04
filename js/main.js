@@ -23,8 +23,6 @@ document.querySelector("#f0 button").addEventListener("click", e => {
     data[item.name] = item.value;
   });
   const result = calcChessBoard(
-    // Math.abs(Number(data.height)),
-    // Math.abs(Number(data.width)),
     data.height,
     data.width,
     data.char
@@ -155,13 +153,13 @@ document.querySelector("#f6-1 button").addEventListener("click", e => {
   e.preventDefault()
   let data = {}
   document.querySelectorAll("#f6-1 input").forEach(item => {
-    data[item.name] = Number(item.value)
+    data[item.name] = item.value
   })
   let result = getRange(data)
   if (result.reason) {
     document.getElementById(
       "6"
-    ).innerHTML = `status: ${result.status} \nreason:${result.reason}`
+    ).innerHTML = `status: ${result.status} \nreason: ${result.reason}`
   } else {
     document.getElementById("6").innerHTML = `Числовой ряд: \n`
     result.forEach(item => {
@@ -173,13 +171,13 @@ document.querySelector("#f6-2 button").addEventListener("click", e => {
   e.preventDefault()
   let data = {}
   document.querySelectorAll("#f6-2 input").forEach(item => {
-    data[item.name] = Number(item.value)
+    data[item.name] = item.value
   })
   let result = getRange(data)
   if (result.reason) {
     document.getElementById(
       "6"
-    ).innerHTML = `status: ${result.status} \nreason:${result.reason}`
+    ).innerHTML = `status: ${result.status} \nreason: ${result.reason}`
   } else {
     document.getElementById("6").innerHTML = `Числовой ряд: \n`
     result.forEach(item => {
