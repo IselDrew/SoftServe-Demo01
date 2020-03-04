@@ -55,7 +55,6 @@ function getTriangle(triangle) {
   for (let key in triangle) {
     triangleData.push(triangle[key]);
   }
-  console.log(triangleData);
   return triangleData;
 }
 
@@ -67,7 +66,6 @@ function calcArea(a, b, c) {
 
 function checkNamesUniqueness(arr) {
   const set = new Set(arr);
-  console.log(arr, set);
   if (arr.length !== set.size) {
     return { status: "failed", reason: "Repeating triangles" };
   }
@@ -109,7 +107,6 @@ function validateData(triangle) {
 function checkVerticlesUniqueness(name) {
   const verticles = name.split("");
   const set = new Set(verticles);
-  console.log(verticles, set);
   return verticles.length === set.size;
 }
 

@@ -4,7 +4,7 @@ import { sortTriangles } from "./modules/task3.js";
 import { checkPalindrome } from "./modules/task4.js";
 import { checkLuckyTicket } from "./modules/task5.js";
 import { getNumbersRow } from "./modules/task6.js";
-// import {} from './modules/task7.js';
+import { getRange } from './modules/task7.js';
 
 document.querySelectorAll(".nav-link").forEach(item => {
   item.addEventListener("click", e => {
@@ -150,40 +150,40 @@ document.querySelector("#f5 button").addEventListener("click", e => {
   }
 });
 
-// //7 task
-// document.querySelector("#f6-1 button").addEventListener("click", e => {
-//   e.preventDefault()
-//   let data = {}
-//   document.querySelectorAll("#f6-1 input").forEach(item => {
-//     data[item.name] = Number(item.value)
-//   })
-//   let result = fibRow(data)
-//   if (result.reason) {
-//     document.getElementById(
-//       "6"
-//     ).innerHTML = `status: ${result.status} \nreason:${result.reason}`
-//   } else {
-//     document.getElementById("6").innerHTML = `Числовой ряд: \n`
-//     result.forEach(item => {
-//       document.getElementById("6").innerHTML += `${item} `
-//     })
-//   }
-// })
-// document.querySelector("#f6-2 button").addEventListener("click", e => {
-//   e.preventDefault()
-//   let data = {}
-//   document.querySelectorAll("#f6-2 input").forEach(item => {
-//     data[item.name] = Number(item.value)
-//   })
-//   let result = fibRow(data)
-//   if (result.reason) {
-//     document.getElementById(
-//       "6"
-//     ).innerHTML = `status: ${result.status} \nreason:${result.reason}`
-//   } else {
-//     document.getElementById("6").innerHTML = `Числовой ряд: \n`
-//     result.forEach(item => {
-//       document.getElementById("6").innerHTML += `${item} `
-//     })
-//   }
-// })
+//7 task
+document.querySelector("#f6-1 button").addEventListener("click", e => {
+  e.preventDefault()
+  let data = {}
+  document.querySelectorAll("#f6-1 input").forEach(item => {
+    data[item.name] = Number(item.value)
+  })
+  let result = getRange(data)
+  if (result.reason) {
+    document.getElementById(
+      "6"
+    ).innerHTML = `status: ${result.status} \nreason:${result.reason}`
+  } else {
+    document.getElementById("6").innerHTML = `Числовой ряд: \n`
+    result.forEach(item => {
+      document.getElementById("6").innerHTML += `${item} `
+    })
+  }
+})
+document.querySelector("#f6-2 button").addEventListener("click", e => {
+  e.preventDefault()
+  let data = {}
+  document.querySelectorAll("#f6-2 input").forEach(item => {
+    data[item.name] = Number(item.value)
+  })
+  let result = getRange(data)
+  if (result.reason) {
+    document.getElementById(
+      "6"
+    ).innerHTML = `status: ${result.status} \nreason:${result.reason}`
+  } else {
+    document.getElementById("6").innerHTML = `Числовой ряд: \n`
+    result.forEach(item => {
+      document.getElementById("6").innerHTML += `${item} `
+    })
+  }
+})

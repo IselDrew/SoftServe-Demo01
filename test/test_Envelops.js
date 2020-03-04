@@ -32,6 +32,9 @@ export function testEnvelops(ass) {
       it("Check if envelops are equal", () => {
         ass.equal(checkNesting({ w: "10", h: "10" }, { w: "10", h: "10" }), 0);
       });
+      it("Check if nesting is impossible", () => {
+        ass.equal(checkNesting({ w: "10", h: "10" }, { w: "1", h: "1000" }), 0);
+      });
       it("Check if first envelop can be nested in second one (straight)", () => {
         ass.equal(checkNesting({ w: "10", h: "10" }, { w: "20", h: "30" }), 2);
       });

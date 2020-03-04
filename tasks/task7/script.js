@@ -1,22 +1,40 @@
-function fib(number)
-{
-	let x = 1;
-	let y = 0;
-	for (let i = 0; i < number; i++)
-	{
-		x += y;
-		y = x - y;
-	}
-	return y;
-}
+function fib(number) {
+  let next = 1;
+  let prev = 0;
 
-function getRange(min, max) {
-  const arr = [];
-  for (let i = min; i <= max; i++) {
-    arr.push( fib(i) );
+  const arr = [0];
+
+  for (let i = 0; i < number; i++) {
+    next += prev;
+    prev = next - prev;
+    arr.push(next);
   }
-  console.log(arr)
+  return arr;
 }
 
-getRange(30, 1000)
+function getRange(context) {
+  const maxAllowedFibNumber = 1e6;
+  const fibNumberArr = fib(maxAllowedFibNumber);
+
+  let range;
+
+  if (context.min && context.max) {
+    //validate
+    range = fibNumberArr.filter(number => 
+      number >= context.min && number <= context.max
+    );
+  }
+
+  if (context.length) {
+    //validate
+    range = fibNumberArr.filter(number => 
+      number.toString().length === context.length
+    );
+  }
+  return range;
+}
+
+function validateRange(min, max, maxFib) {}
+
+function validateLength(length, maxFib) {}
 
